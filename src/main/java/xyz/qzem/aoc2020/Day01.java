@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Day01 {
 
     private static final int target = 2020;
-    private static final String fileName = "D:\\code\\workspace\\aoc2020\\src\\main\\resources\\input\\day01.txt";
+    private static final String fileName =
+            Objects.requireNonNull(Day05.class.getClassLoader().getResource("input/day01.txt")).getPath();
 
     public static void main(String[] args) throws IOException {
         int[] xs = Files.lines(Paths.get(fileName)).mapToInt(Integer::parseInt).toArray();

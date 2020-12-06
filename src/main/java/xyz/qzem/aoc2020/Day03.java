@@ -5,11 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Day03 {
 
-    private static final String fileName = "D:\\code\\workspace\\aoc2020\\src\\main\\resources\\input\\day03.txt";
+    private static final String fileName =
+            Objects.requireNonNull(Day05.class.getClassLoader().getResource("input/day03.txt")).getPath();
 
     public static void main(String[] args) throws IOException {
         List<String> xs = Files.lines(Paths.get(fileName)).collect(Collectors.toList());

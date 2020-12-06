@@ -6,11 +6,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Day05 {
 
-    private static final String fileName = "D:\\code\\workspace\\aoc2020\\src\\main\\resources\\input\\day05.txt";
+    private static final String fileName =
+            Objects.requireNonNull(Day05.class.getClassLoader().getResource("input/day05.txt")).getPath();
 
     public static void main(String[] args) throws IOException {
         List<String> xs = Files.lines(Paths.get(fileName)).collect(Collectors.toList());

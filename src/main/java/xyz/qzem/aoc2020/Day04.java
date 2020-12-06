@@ -4,19 +4,13 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Day04 {
 
-    private static final String fileName = "D:\\code\\workspace\\aoc2020\\src\\main\\resources\\input\\day04.txt";
+    private static final String fileName =
+            Objects.requireNonNull(Day05.class.getClassLoader().getResource("input/day04.txt")).getPath();
 
     public static void main(String[] args) throws IOException {
         List<String> xs = Files.lines(Paths.get(fileName)).collect(Collectors.toList());
@@ -64,8 +58,7 @@ public class Day04 {
         required.put("ecl", new EclValidator());
         required.put("pid", new PidValidator());
         Set<String> seen = new HashSet<>();
-        for (int i = 0; i < xs.size(); i++) {
-            String x = xs.get(i);
+        for (String x : xs) {
             if (x.trim().isEmpty()) {
                 boolean flag = true;
                 for (String r : required.keySet()) {
@@ -75,7 +68,6 @@ public class Day04 {
                     }
                 }
                 if (flag) {
-                    System.out.println(i);
                     count++;
                 }
                 seen.clear();
