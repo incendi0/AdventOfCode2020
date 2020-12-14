@@ -3,17 +3,15 @@ package xyz.qzem.aoc2020;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Day14 {
 
-    private static final String fileName = "D:\\code\\workspace\\aoc2020\\src\\main\\resources\\input\\day14.txt";
+    private static final String fileName =
+            Objects.requireNonNull(Day05.class.getClassLoader().getResource("input/day14.txt")).getPath();
     private static final Pattern pattern = Pattern.compile("mem\\[(\\d+)\\]\\s+=\\s+(\\d+)");
 
     public static void main(String[] args) throws IOException {
