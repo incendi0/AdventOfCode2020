@@ -66,8 +66,26 @@ public class Day16 {
             }
         }
         System.out.println(map);
+        Set<String> determined = new HashSet<>();
+        while (determined.size() < 20) {
+            for (Map.Entry<Integer, Set<String>> entry : map.entrySet()) {
+                if (entry.getValue().size() == 1) {
+                    determined.add(entry.getValue().iterator().next());
+                } else {
+                    Set<String> set = entry.getValue();
+                    set.removeIf(determined::contains);
+                }
+            }
+        }
+        List<Integer> tickets = Arrays.stream(ticket.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        long ret = 1;
+        for (Map.Entry<Integer, Set<String>> entry : map.entrySet()) {
+            if (entry.getValue().iterator().next().startsWith("departure")) {
+                ret *= tickets.get(entry.getKey());
+            }
+        }
+        System.out.println(ret);
     }
-
     private static boolean contains(List<int[]> rs, int v) {
         for (int[] r : rs) {
             if (r[0] <= v && v <= r[1]) {
